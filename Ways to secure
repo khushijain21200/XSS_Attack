@@ -1,0 +1,17 @@
+💡 How to Secure Yourself Against XSS Attacks:
+
+Validate Input:
+
+Always validate and sanitize user inputs on both client and server sides to prevent malicious code from being executed.
+Escape Outputs:
+
+Ensure that data sent to the browser is properly escaped. For HTML content, use HTML entity encoding to neutralize any potentially dangerous characters.
+Use Security Headers:
+
+Implement Content Security Policy (CSP) headers to restrict the sources from which scripts can be loaded and executed.
+Employ Secure Libraries:
+
+Use well-maintained libraries and frameworks that have built-in protections against XSS.
+Regular Security Audits:
+
+Regularly audit your web applications for vulnerabilities using automated tools and manual testing.
